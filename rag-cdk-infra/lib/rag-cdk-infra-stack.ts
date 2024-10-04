@@ -10,7 +10,7 @@ import {
 } from "aws-cdk-lib/aws-lambda";
 import { ManagedPolicy } from "aws-cdk-lib/aws-iam";
 
-export class RagCdkInfraStack extends cdk.Stack {
+export class RagCdkInfraStack2 extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -18,6 +18,14 @@ export class RagCdkInfraStack extends cdk.Stack {
     const ragQueryTable = new Table(this, "RagQueryTable", {
       partitionKey: { name: "query_id", type: AttributeType.STRING },
       billingMode: BillingMode.PAY_PER_REQUEST,
+      timeToLiveAttribute: "ttl",
+    });
+
+    // Add secondary index, to query by user_id and create_time.
+    ragQueryTable.addGlobalSecondaryIndex({
+      indexName: "queries_by_user_id",
+      partitionKey: { name: "user_id", type: AttributeType.STRING },
+      sortKey: { name: "create_time", type: AttributeType.NUMBER },
     });
 
     // Lambda function (image) to handle the worker logic (run RAG/AI model).
