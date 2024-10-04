@@ -76,10 +76,7 @@ This will build the image (using linux amd64 as the platform — we need this fo
 
 ```sh
 # Run the container using command `python app_work_handler.main`
-docker run --rm -it \
-    --entrypoint python \
-    --env-file .env \
-    aws_rag_app app_work_handler.py
+docker run --rm -it --entrypoint python --env-file .env aws_rag_app app_work_handler.py
 ```
 
 This will test the image, seeing if it can run the RAG/AI component with a hard-coded question (see ` app_work_handler.py`). But since it uses Bedrock as the embeddings and LLM platform, you will need an AWS account and have all the environment variables for your access set (`AWS_ACCESS_KEY_ID`, etc).
@@ -91,10 +88,7 @@ You will also need to have Bedrock's models enabled and granted for the region y
 Assuming you've build the image from the previous step.
 
 ```sh
-docker run --rm -p 8000:8000 \
-    --entrypoint python \
-    --env-file .env \
-    aws_rag_app app_api_handler.py
+docker run --rm -p 8000:8000 --entrypoint python --env-file .env aws_rag_app app_api_handler.py
 ```
 
 ## Testing Locally

@@ -20,7 +20,7 @@ def invoke_rag(query_item: QueryModel):
 def main():
     print("Running example RAG call.")
     query_item = QueryModel(
-        query_text="How long does an e-commerce system take to build?"
+        query_text="What is Sliding Window Attention?"
     )
     response = invoke_rag(query_item)
     print(f"Received: {response}")

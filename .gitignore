@@ -2,6 +2,7 @@
 **/chroma
 env/
 .env
+.history
 
 # Some files generated for tutorial.
 original_reqs.txt
