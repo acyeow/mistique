@@ -9,3 +9,8 @@ original_reqs.txt
 filtered_reqs.txt
 pip_freeze.txt
 generate_reqs.py
+
+rag-app-front-end/node_modules/
+rag-app-front-end/.next/
+rag-app-front-end/.history
+rag-app-front-end/.env.local
