@@ -14,3 +14,5 @@ rag-app-front-end/node_modules/
 rag-app-front-end/.next/
 rag-app-front-end/.history
 rag-app-front-end/.env.local
+
+commands.md
